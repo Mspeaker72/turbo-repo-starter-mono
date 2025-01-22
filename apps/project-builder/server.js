@@ -5,6 +5,7 @@ const path = require('path');
 const app = express();
 const port = 3001;
 
+
 // Promisify the exec function
 const execAsync = promisify(exec);
 
@@ -47,6 +48,11 @@ async function runScript() {
     console.log('\nThe turbo repo script will begin shortly... 😊');
     console.log(command);
 
+    await execAsync(`mkdir output`)
+
+    await execAsync(`cd output`)
+
+
     const { stdout, stderr } = await execAsync(command);
     if (stderr && !stderr.includes('Downloading files') && !stderr.includes('Installing dependencies')) {
         console.error(`Stderr: ${stderr}`);
@@ -56,7 +62,7 @@ async function runScript() {
     }
 
     
-    const { stdout: codeStdout, stderr: codeStderr } = await execAsync(`mkdir output && cd output/${fileName} && code .`);
+    const { stdout: codeStdout, stderr: codeStderr } = await execAsync(`cd ${fileName} && code .`);
     if (codeStderr) {
         console.error(`Stderr: ${codeStderr}`);
     } else {
