@@ -1,17 +1,13 @@
 const express = require('express');
 const { exec } = require('child_process');
 const { promisify } = require('util');
+const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = 3001;
 
 // Promisify the exec function
 const execAsync = promisify(exec);
-
-// Mock data for testing
-const fileName = 'my-mono-repo';
-const withFlag = 'vite';  // Example flag
-const whichPackage = 'npm';  // Example package manager
 
 const flagDic = {
     'vite': '-ewith-vite',
@@ -25,48 +21,68 @@ const packageManager = {
     'pnpm': '-mpnpm'
 };
 
-const BaseCommand = ['npx', 'create-turbo@latest'];
+// Default output directory outside the project directory
+const defaultOutputDir = path.join(__dirname, '../../../output');
 
-// Add project name to the command
-BaseCommand.push(fileName);
 
-// Add flag to the command if specified
-if (withFlag in flagDic) {
-    BaseCommand.splice(-1, 0, flagDic[withFlag]);
-}
+async function runScript(fileName, withFlag, whichPackage, outputDir = defaultOutputDir) {
+    const BaseCommand = ['npx', 'create-turbo@latest'];
 
-// Add package manager to the command if specified
-if (whichPackage in packageManager) {
-    BaseCommand.splice(-1, 0, packageManager[whichPackage]);
-}
+    BaseCommand.push(fileName);
 
-const command = BaseCommand.join(' ');
+    if (withFlag in flagDic) {
+        BaseCommand.splice(-1, 0, flagDic[withFlag]);
+    }
 
-// Async function to run the script
-async function runScript() {
+    if (whichPackage in packageManager) {
+        BaseCommand.splice(-1, 0, packageManager[whichPackage]);
+    }
+
+    const command = BaseCommand.join(' ');
+
     console.log('\nThe turbo repo script will begin shortly... 😊');
     console.log(command);
-    
-    const { stdout, stderr } = await execAsync(command);
+
+    // Create the output directory if it doesn't exist
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    // Run the command in the output directory
+    const { stdout, stderr } = await execAsync(command, { cwd: outputDir });
     if (stderr && !stderr.includes('Downloading files') && !stderr.includes('Installing dependencies')) {
         console.error(`Stderr: ${stderr}`);
+        return  {
+          message: codeStderr, 
+          code:500
+      }
     } else {
         console.log(`Stdout: ${stdout}`);
         console.log('\nThe project has opened in a new VSCode window 🤩');
     }
 
-    const { stdout: codeStdout, stderr: codeStderr } = await execAsync(`cd ${fileName} && code .`);
+    const { stdout: codeStdout, stderr: codeStderr } = await execAsync(`code .`, { cwd: path.join(outputDir, fileName) });
     if (codeStderr) {
         console.error(`Stderr: ${codeStderr}`);
+
+        return  {
+            message: codeStderr, 
+            code:500
+        }
     } else {
         console.log(`Stdout: ${codeStdout}`);
+        return  {
+            message:'project has been created', 
+            code:200
+        }
     }
 }
 
-// Endpoint to run the script
 app.get('/run-script', async (req, res) => {
-    await runScript();
-    res.send('Script execution initiated. Check logs for details.');
+    const { fileName = 'my-mono-repo', withFlag = 'vite', whichPackage = 'npm' } = req.query;
+    const response = await runScript(fileName, withFlag, whichPackage);
+    res.send(response);
+    
 });
 
 app.listen(port, () => {
