@@ -1,12 +1,12 @@
 {
   "name": "project-builder",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node server.js --turbopack --port 3001"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "express": "^4.17.1",
+    "util": "^0.12.4"
+  }
 }
