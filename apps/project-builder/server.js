@@ -55,7 +55,8 @@ async function runScript() {
         console.log('\nThe project has opened in a new VSCode window 🤩');
     }
 
-    const { stdout: codeStdout, stderr: codeStderr } = await execAsync(`cd ${fileName} && code .`);
+    
+    const { stdout: codeStdout, stderr: codeStderr } = await execAsync(`mkdir output && cd output/${fileName} && code .`);
     if (codeStderr) {
         console.error(`Stderr: ${codeStderr}`);
     } else {
