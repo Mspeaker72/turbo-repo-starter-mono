@@ -6,6 +6,7 @@
     "dev": "node server.js --turbopack --port 3001"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "util": "^0.12.4"
   }

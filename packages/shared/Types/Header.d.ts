@@ -1,4 +1,4 @@
-declare namespace Header {
+declare namespace HeaderTypes {
   type HeaderProps = {
     name?: string;
     background?: string,
@@ -6,3 +6,6 @@ declare namespace Header {
     height?: string,
   }
 }
+
+
+export = HeaderTypes

@@ -1,0 +1,14 @@
+{
+  "name": "@shared/types",
+"version": "0.0.0",
+"private": true,
+"exports": {
+  "./headerTypes": "./Types/headerTypes.d.ts",
+  "./responses": "./Types/responses.d.ts"
+},
+"scripts": {
+  "lint": "eslint . --max-warnings 0",
+  "generate:component": "turbo gen react-component",
+  "check-types": "tsc --noEmit"
+}
+}

@@ -1,20 +1,25 @@
 "use client";
 
-import { ReactNode } from "react";
+import 
+  styled 
+from "styled-components";
+
+const StyledButton = styled.button`
+
+`
 
 interface ButtonProps {
-  children: ReactNode;
-  className?: string;
-  appName: string;
+  text:string,
+  onClick: () => void
 }
 
-export const Button = ({ children, className, appName }: ButtonProps) => {
-  return (
-    <button
-      className={className}
-      onClick={() => alert(`Hello from your ${appName} app!`)}
-    >
-      {children}
-    </button>
+export const Button = ({...props}:ButtonProps) => {
+
+  return (<StyledButton
+  onClick={()=>props.onClick()}
+  >
+    {props.text}
+  </StyledButton>
   );
-};
+
+}
