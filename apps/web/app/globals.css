@@ -3,6 +3,12 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: flex-start;
+  background-color: #e3fff5 ;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
 }
