@@ -6,6 +6,20 @@ from "styled-components";
 
 const StyledButton = styled.button`
 
+border-radius: 20px;
+padding: 1rem;
+background:#FF4141;
+color: white;
+border: none;
+width: 90%;
+margin: 5px 0;
+
+&:hover{
+  cursor: pointer;
+  border: 1px white solid;
+}
+
+
 `
 
 interface ButtonProps {

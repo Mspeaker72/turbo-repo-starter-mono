@@ -1,6 +1,7 @@
 "use client"
-import { Header } from '@repo/ui/header';
+import { OuterFrame } from '@repo/ui/form';
 import { Button } from '@repo/ui/button';
+import LoadingSpinner from '@repo/ui/spinner';
 import ValidResponses from '@shared/types/responses';
 import { useState } from 'react';
 
@@ -26,12 +27,22 @@ export default function Home() {
 
   return (
     <>
-    <Header/>
+
+
+    <div style={{}}>
+      {!isLoading && <LoadingSpinner/>}
+    </div>
+    
+
+    <OuterFrame>
+
     <Button
-    text='create project'
+    text='execute command'
     onClick={run}
     disabled={isLoading}
     />
+
+    </OuterFrame>
     
     </>
   );

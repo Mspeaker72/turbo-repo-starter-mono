@@ -5,10 +5,9 @@ body {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  justify-content: flex-start;
-  background-color: #e3fff5 ;
-  flex-direction: column;
+  justify-content: flex-end;
+  background-color: #111127 ;
+  flex-direction: row;
   min-width: 320px;
   min-height: 100vh;
 }
