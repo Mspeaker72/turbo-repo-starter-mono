@@ -29,8 +29,8 @@ export default function Home() {
     <>
 
 
-    <div style={{}}>
-      {!isLoading && <LoadingSpinner/>}
+    <div style={{ width: '100%',display:'flex',flexDirection:'column',alignItems: 'center',justifyContent: 'center'}}>
+      {isLoading && <LoadingSpinner/>}
     </div>
     
 
