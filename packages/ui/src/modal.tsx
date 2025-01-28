@@ -2,6 +2,10 @@ import
   styled 
 from "styled-components";
 
+// A modal is used for notfications and takes entire page most of the time , can show errors and creates a
+// requires a button or click away to close , usehistory can be used to navitage to seperate page should this
+// meet the requirements.
+
 interface ModalProps {
   show: boolean;
 }
