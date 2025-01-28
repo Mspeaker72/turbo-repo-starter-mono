@@ -57,16 +57,6 @@ export default function Home() {
       options={['nextJs','vite','storybook','svelte']}
       />
 
-    <Dropdown
-      label={'Package Manager'}
-      options={['npm','yarn']}
-      />
-
-      <Dropdown
-      label={'project-type'}
-      options={['nextJs','vite','storybook','svelte']}
-      />
-
     <Button
     text='execute command'
     onClick={run}

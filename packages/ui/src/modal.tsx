@@ -8,6 +8,8 @@ from "styled-components";
 
 interface ModalProps {
   show: boolean;
+  messsage?: string;
+  icon?: string;
 }
 
 const ModalBackground = styled.div`
@@ -18,12 +20,28 @@ const ModalBackground = styled.div`
   left: 0;
   display: flex;
   background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
 `
 
+const DeatilsBox = styled.div`
+  width: 400px;
+  height: 200px;
+  border-radius: 20px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`
 export const Modal = ({show}:ModalProps) => {
   return (
     show && 
     <ModalBackground>
+
+      <DeatilsBox>
+        Error has occured!
+      </DeatilsBox>
 
     </ModalBackground>
 
