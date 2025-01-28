@@ -10,7 +10,8 @@
     "./code": "./src/code.tsx",
     "./header": "./src/header.tsx",
     "./dropdown":"./src/dropdown.tsx",
-    "." :"./src/display.tsx"
+    "." :"./src/display.tsx",
+    "./modal":"./src/modal.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

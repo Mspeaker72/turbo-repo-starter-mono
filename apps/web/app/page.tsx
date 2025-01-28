@@ -7,16 +7,18 @@ import { Frame } from '@repo/ui';
 import { TitleFrame } from '@repo/ui';
 import { Dropdown } from '@repo/ui/dropdown';
 import { useState } from 'react';
+import { Modal } from '@repo/ui/modal';
 
 export default function Home() {
 
   const[isLoading,setIsLoading] = useState(false)
+  const[error,setError]=useState(false)
 
   const run = async ()=> {
 
     let result:ValidResponses.ServerResponse = {}
 
-    setIsLoading(prevState => !prevState);
+    setError(prevState => !prevState);
   
     // await fetch('http://localhost:3001/run-script',{method:'GET'}).then((data)=>data.json()).then((message) => result = message)
   
@@ -30,9 +32,13 @@ export default function Home() {
 
   return (
     <>
-
-
     <Frame>
+
+      <Modal
+      show={error}
+      >
+      </Modal>
+
       <TitleFrame>
         Mono-template-builder
       </TitleFrame>
