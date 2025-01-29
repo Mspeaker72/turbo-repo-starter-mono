@@ -18,26 +18,30 @@ export default function Home() {
 
     let result:ValidResponses.ServerResponse = {}
 
-    setError(prevState => !prevState);
+    setIsLoading(prevState => !prevState);
   
-    // await fetch('http://localhost:3001/run-script',{method:'GET'}).then((data)=>data.json()).then((message) => result = message)
+    await fetch('http://localhost:3001/run-script',{method:'GET'}).then((data)=>data.json()).then((message) => result = message)
   
-    // if(result.code !== 200){
-    //   alert('command has failed');
-    // }
+    if(result.code !== 200){
+      setError(prevState => !prevState)
+    }
   
-    console.log(result);
-    // setIsLoading(prevState => !prevState);
+    setIsLoading(prevState => !prevState);
+  }
+
+
+  if(error){
+    return(
+      // one must use dispatch to have various error screens withi
+      <Modal>
+
+      </Modal>
+    );
   }
 
   return (
     <>
     <Frame>
-
-      <Modal
-      show={error}
-      >
-      </Modal>
 
       <TitleFrame>
         Mono-template-builder

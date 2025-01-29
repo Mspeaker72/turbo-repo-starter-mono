@@ -7,7 +7,6 @@ from "styled-components";
 // meet the requirements.
 
 interface ModalProps {
-  show: boolean;
   messsage?: string;
   icon?: string;
 }
@@ -25,8 +24,8 @@ const ModalBackground = styled.div`
 `
 
 const DeatilsBox = styled.div`
-  width: 400px;
-  height: 200px;
+  width: 800px;
+  height: 300px;
   border-radius: 20px;
   background: white;
   display: flex;
@@ -34,9 +33,9 @@ const DeatilsBox = styled.div`
   align-items: center;
 
 `
-export const Modal = ({show}:ModalProps) => {
+export const Modal = ({...props}:ModalProps) => {
   return (
-    show && 
+    
     <ModalBackground>
 
       <DeatilsBox>
