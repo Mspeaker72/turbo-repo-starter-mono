@@ -2,6 +2,12 @@ import
   styled 
 from "styled-components";
 
+
+
+import { 
+  ModalButton
+} from "./button";
+
 // A modal is used for notfications and takes entire page most of the time , can show errors and creates a
 // requires a button or click away to close , usehistory can be used to navitage to seperate page should this
 // meet the requirements.
@@ -9,6 +15,7 @@ from "styled-components";
 interface ModalProps {
   messsage?: string;
   icon?: string;
+  onClick: () => void;
 }
 
 const ModalBackground = styled.div`
@@ -31,6 +38,8 @@ const DeatilsBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 20px;
 
 `
 export const Modal = ({...props}:ModalProps) => {
@@ -40,6 +49,12 @@ export const Modal = ({...props}:ModalProps) => {
 
       <DeatilsBox>
         Error has occured!
+        <ModalButton
+        onClick={props.onClick}
+        >
+          Close
+        </ModalButton>
+
       </DeatilsBox>
 
     </ModalBackground>

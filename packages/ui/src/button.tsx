@@ -19,7 +19,19 @@ margin: 5px 0;
   border: 1px white solid;
 }
 
+&:disabled{
+  cursor: not-allowed;
+  background: gainsboro;
+  border: none;
+}
 
+`
+
+export const ModalButton = styled(StyledButton)`
+  width: 50%;
+  font-size: 18px;
+  font-family-roboto;
+  font-weight: 500;
 `
 
 interface ButtonProps {

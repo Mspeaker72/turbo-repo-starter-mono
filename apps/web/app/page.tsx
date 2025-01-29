@@ -9,6 +9,7 @@ import { Dropdown } from '@repo/ui/dropdown';
 import { useState } from 'react';
 import { Modal } from '@repo/ui/modal';
 
+
 export default function Home() {
 
   const[isLoading,setIsLoading] = useState(false)
@@ -29,11 +30,19 @@ export default function Home() {
     setIsLoading(prevState => !prevState);
   }
 
+  const closeError = () => {
+
+    setError(prevState => !prevState);
+
+  }
+
 
   if(error){
     return(
-      // one must use dispatch to have various error screens withi
-      <Modal>
+      // one must use dispatch to have various error screens within
+      <Modal
+      onClick={closeError}
+      >
 
       </Modal>
     );
@@ -46,7 +55,9 @@ export default function Home() {
       <TitleFrame>
         Mono-template-builder
       </TitleFrame>
-    {isLoading && <LoadingSpinner/>}
+    
+      {isLoading && <LoadingSpinner/>}
+    
     </Frame>
     
     <OuterFrame>
