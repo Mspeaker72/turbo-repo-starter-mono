@@ -60,7 +60,7 @@ export default function Home() {
     <OuterFrame>
 
       <InputBox
-      label={ 'file-name:' }
+      label={ 'FileName:' }
       />
 
       <Dropdown
@@ -69,7 +69,7 @@ export default function Home() {
       />
 
       <Dropdown
-      label={'project-type:'}
+      label={'Project-Type:'}
       options={['nextJs','vite','storybook','svelte']}
       />
 
