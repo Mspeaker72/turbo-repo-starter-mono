@@ -51,7 +51,7 @@ export default function Home() {
 
   if(error){
     return(
-      // one must use dispatch to have various error screens within
+      // one must use dispatch to have various error screens within //
       <Modal
       onClick={closeError}
       >
