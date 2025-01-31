@@ -12,6 +12,17 @@ import { InputBox } from '@repo/ui/dropdown';
 
 
 export default function Home() {
+  //move to a constants file to build options from there
+  const menu = [
+    {
+      label: 'Package Manager:',
+      options: ['choose one:','npm','yarn']
+    },
+    {
+      label: 'ProjectType:',
+      options:['choose one:','nextJs','vite','storybook','svelte']
+    }
+  ]
 
   const[isLoading,setIsLoading] = useState(false)
   const[error,setError]=useState(false)
@@ -63,15 +74,13 @@ export default function Home() {
       label={ 'FileName:' }
       />
 
-      <Dropdown
-      label={'Package Manager:'}
-      options={['npm','yarn']}
-      />
-
-      <Dropdown
-      label={'Project-Type:'}
-      options={['nextJs','vite','storybook','svelte']}
-      />
+    {menu.map((menuItem, index)=>
+    <Dropdown
+    key={index}
+    label= {menuItem.label}
+    options={menuItem.options}
+    />
+    )}
 
     <Button
     text='execute command'
