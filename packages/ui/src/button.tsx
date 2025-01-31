@@ -11,15 +11,28 @@ padding: 1rem;
 background:#FF4141;
 color: white;
 border: none;
-width: 90%;
+width: 100%;
 margin: 5px 0;
+
 
 &:hover{
   cursor: pointer;
   border: 1px white solid;
 }
 
+&:disabled{
+  cursor: not-allowed;
+  background: gainsboro;
+  border: none;
+}
 
+`
+
+export const ModalButton = styled(StyledButton)`
+  width: 25%;
+  font-size: 18px;
+  font-family-roboto;
+  font-weight: 500;
 `
 
 interface ButtonProps {

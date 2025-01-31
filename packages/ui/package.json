@@ -11,7 +11,8 @@
     "./header": "./src/header.tsx",
     "./dropdown":"./src/dropdown.tsx",
     "." :"./src/display.tsx",
-    "./modal":"./src/modal.tsx"
+    "./modal":"./src/modal.tsx",
+    "./keyboard":"./src/keyboard.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

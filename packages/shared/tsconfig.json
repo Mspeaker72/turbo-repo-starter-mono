@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["./Types/*"],
+  "include": ["./Types/*","./Images/*"],
   "exclude": ["node_modules", "dist"]
 }
