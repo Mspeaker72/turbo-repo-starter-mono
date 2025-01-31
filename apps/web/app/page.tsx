@@ -3,7 +3,7 @@ import { OuterFrame } from '@repo/ui/form';
 import { Button } from '@repo/ui/button';
 import LoadingSpinner from '@repo/ui/spinner';
 import ValidResponses from '@shared/types/responses';
-import { Frame } from '@repo/ui';
+import { Frame, SpinnerFrame } from '@repo/ui';
 import { TitleFrame } from '@repo/ui';
 import { Dropdown } from '@repo/ui/dropdown';
 import { useState } from 'react';
@@ -51,11 +51,11 @@ export default function Home() {
 
   return (
     <>
-    <Frame>
+    <SpinnerFrame>
     
       {isLoading && <LoadingSpinner/>}
     
-    </Frame>
+    </SpinnerFrame>
     
     <OuterFrame>
 

@@ -10,6 +10,10 @@ export const Frame = styled.div`
   justify-content: flex-start;
 
 `
+export const SpinnerFrame = styled(Frame)`
+  justify-content: center;
+`
+
 export const TitleFrame = styled.div`
 width: 100%;
 color: white;
