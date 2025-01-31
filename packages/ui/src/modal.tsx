@@ -2,11 +2,10 @@ import
   styled 
 from "styled-components";
 
-
-
 import { 
   ModalButton
 } from "./button";
+import { Icons } from "./Constants/Images";
 
 // A modal is used for notfications and takes entire page most of the time , can show errors and creates a
 // requires a button or click away to close , usehistory can be used to navitage to seperate page should this
@@ -39,7 +38,7 @@ const DeatilsBox = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 
 `
 export const Modal = ({...props}:ModalProps) => {
@@ -48,6 +47,11 @@ export const Modal = ({...props}:ModalProps) => {
     <ModalBackground>
 
       <DeatilsBox>
+        <img
+        src={Icons.errorIcon}
+        style={{width:'60px', height:"60px"}}
+        >
+        </img>
         Error has occured!
         <ModalButton
         onClick={props.onClick}

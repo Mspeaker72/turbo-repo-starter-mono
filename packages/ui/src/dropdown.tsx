@@ -8,17 +8,37 @@ interface DropdownProps {
   onSelection?: () => void,
 }
 
+interface InputBoxProps {
+  label?: string,
+}
+
 
 const Frame = styled.div`
 width: 100%;
 display:flex;
-justify-content: space-evenly;
-margin: 10px 0px;
+justify-content: flex-start;
 font-size: 16px;
-background: #3D3D3D;
-padding: 1rem 0;
+gap: 10px;
+color: white;
+font-weight: 800;
 border-radius : 0px 20px 20px 0px;
+flex-direction: column;
 `
+
+export const InputBox = ({label}:InputBoxProps) => {
+
+  return(
+
+  <Frame>
+
+    {label}
+
+  <input
+  type={ 'text' }
+  />
+  </Frame>
+  );
+}
 
 
 export const Dropdown = ({options, onSelection,label}:DropdownProps) => {

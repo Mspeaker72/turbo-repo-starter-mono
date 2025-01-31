@@ -11,8 +11,9 @@ padding: 1rem;
 background:#FF4141;
 color: white;
 border: none;
-width: 90%;
+width: 100%;
 margin: 5px 0;
+
 
 &:hover{
   cursor: pointer;
@@ -28,7 +29,7 @@ margin: 5px 0;
 `
 
 export const ModalButton = styled(StyledButton)`
-  width: 50%;
+  width: 25%;
   font-size: 18px;
   font-family-roboto;
   font-weight: 500;

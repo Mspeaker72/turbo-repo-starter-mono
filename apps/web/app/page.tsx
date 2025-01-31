@@ -8,6 +8,7 @@ import { TitleFrame } from '@repo/ui';
 import { Dropdown } from '@repo/ui/dropdown';
 import { useState } from 'react';
 import { Modal } from '@repo/ui/modal';
+import { InputBox } from '@repo/ui/dropdown';
 
 
 export default function Home() {
@@ -51,10 +52,6 @@ export default function Home() {
   return (
     <>
     <Frame>
-
-      <TitleFrame>
-        Mono-template-builder
-      </TitleFrame>
     
       {isLoading && <LoadingSpinner/>}
     
@@ -62,13 +59,17 @@ export default function Home() {
     
     <OuterFrame>
 
+      <InputBox
+      label={ 'file-name:' }
+      />
+
       <Dropdown
-      label={'Package Manager'}
+      label={'Package Manager:'}
       options={['npm','yarn']}
       />
 
       <Dropdown
-      label={'project-type'}
+      label={'project-type:'}
       options={['nextJs','vite','storybook','svelte']}
       />
 
